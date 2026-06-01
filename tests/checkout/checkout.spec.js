@@ -131,10 +131,10 @@ test.describe('Checkout And Order Module', () => {
     });
 
     // ================================
-    // CHECKOUT-16 Verify login button visible
+    // CHECKOUT-16 Verify logout button visible
     // ================================
-    test('CHECKOUT-16 Verify login button visible', async () => {
-        await expect(checkoutPage.loginBtn).toBeVisible();
+    test('CHECKOUT-16 Verify logout button visible', async ({page}) => {
+        await expect(checkoutPage.logoutBtn).toBeVisible();
     });
 
 });

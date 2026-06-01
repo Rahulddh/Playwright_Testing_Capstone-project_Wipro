@@ -7,7 +7,7 @@ class CheckoutPage {
     this.cartBtn = page.locator("a[href='/view_cart']").first();
     this.homeBtn = page.locator("a[href='/']").first();
     this.contactBtn = page.locator("a[href='/contact_us']").first();
-    this.loginBtn = page.locator("a[href='/login']").first();
+    this.logoutBtn = page.locator("a[href='/logout']").first();
 
     // Common Elements
     this.body = page.locator('body');
