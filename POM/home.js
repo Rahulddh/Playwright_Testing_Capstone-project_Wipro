@@ -2,6 +2,16 @@ class HomePage {
 
     constructor(page) {
         this.page = page;
+
+        // Block Google Ads and external trackers to prevent WebKit test failures and click interception
+        page.route('**/*', (route) => {
+            const url = route.request().url();
+            if (url.includes('google') || url.includes('ads') || url.includes('doubleclick') || url.includes('analytics') || url.includes('adservice')) {
+                route.abort();
+            } else {
+                route.continue();
+            }
+        }).catch(() => {});
         this.productsBtn = page.locator("a[href='/products']").first();
         this.cartBtn = page.locator("a[href='/view_cart']").first();
         this.homeBtn = page.locator("a[href='/']").first();

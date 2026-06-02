@@ -3,6 +3,16 @@ class LoginPage {
     constructor(page) {
         this.page = page;
 
+        // Block Google Ads and external trackers to prevent WebKit test failures and click interception
+        page.route('**/*', (route) => {
+            const url = route.request().url();
+            if (url.includes('google') || url.includes('ads') || url.includes('doubleclick') || url.includes('analytics') || url.includes('adservice')) {
+                route.abort();
+            } else {
+                route.continue();
+            }
+        }).catch(() => {});
+
         // Locators
         this.email = page.locator('input[data-qa="login-email"]');
         this.password = page.locator('input[data-qa="login-password"]');
