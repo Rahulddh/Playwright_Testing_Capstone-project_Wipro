@@ -22,6 +22,8 @@ jobs:
         shard_index: [1, 2, 3]
     env:
       CI: true
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
 
     steps:
     - name: Checkout Repository
